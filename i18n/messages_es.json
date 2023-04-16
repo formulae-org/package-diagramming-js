@@ -1,0 +1,11 @@
+{
+	"pathDiagramming" : "Diagramas",
+
+	"nameTree" : "Diagrama de árbol",
+	"leafTree" : "Árbol",
+
+	"nameToTree"     : "Creación de diagrama de árbol",
+	"mnemonicToTree" : "CrearÁrbol",
+	"leafToTree"     : "Crear árbol"
+}
+
