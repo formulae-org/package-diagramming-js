@@ -46,5 +46,5 @@ Diagramming.toTreeReducer = async (toTree, session) => {
 };
 
 Diagramming.setReducers = () => {
-	ReductionManager.addReducer("Diagramming.ToTree", Diagramming.toTreeReducer);
+	ReductionManager.addReducer("Diagramming.ToTree", Diagramming.toTreeReducer, "Diagramming.toTreeReducer");
 };
