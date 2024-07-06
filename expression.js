@@ -46,22 +46,22 @@ Diagramming.Tree = class extends Expression {
 		super.get(name);
 	}
 	
-	setSerializationStrings(strings, promises) {
-		if (strings[0] != "True" && strings[0] != "False") {
-			throw "Invalid expansion state";
-		}
-
-		this.set("Expanded", strings[0] == "True");
-	}
-	
 	getSerializationNames() {
 		return [ "Expanded" ];
 	}
 	
-	getSerializationStrings() {
+	async getSerializationStrings() {
 		return [ this.expanded ? "True" : "False" ];
 	}
-
+	
+	setSerializationStrings(strings, promises) {
+		if (strings[0] != "True" && strings[0] != "False") {
+			throw "Invalid expansion state";
+		}
+		
+		this.set("Expanded", strings[0] == "True");
+	}
+	
 	prepareDisplay(context) {
 		if (Diagramming.horizontalTree) {
 			this.prepareDisplayHorizontal(context);
