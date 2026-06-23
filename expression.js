@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Diagramming extends Formulae.Package {}
 
@@ -27,17 +27,17 @@ Diagramming.Tree = class extends Expression {
 		super();
 		this.expanded = true;
 	}
-
+	
 	getTag() { return "Diagramming.Tree"; }
 	getName() { return Diagramming.messages.nameTree; }
 	canHaveChildren(count)  { return count > 0; }
-
+	
 	set(name, value) {
 		if (name =="Expanded") {
 			this.expanded = value;
 			return;
 		}
-
+		
 		super.set(name, value);
 	}
 	
@@ -70,10 +70,10 @@ Diagramming.Tree = class extends Expression {
 			this.prepareDisplayVertical(context);
 		}
 	}
-
+	
 	prepareDisplayHorizontal(context) {
 		let child = this.children[0];
-
+		
 		child.prepareDisplay(context);
 		child.x = child.y = 10;
 		
@@ -117,7 +117,7 @@ Diagramming.Tree = class extends Expression {
 		this.horzBaseline = Math.round(this.height / 2);
 		this.vertBaseline = Math.round(this.width / 2);
 	}
-
+	
 	prepareDisplayVertical(context) {
 		let child;
 		(child = this.children[0]).prepareDisplay(context);
@@ -156,7 +156,7 @@ Diagramming.Tree = class extends Expression {
 			this.displayVertical(context, x, y);
 		}
 	}
-
+	
 	displayHorizontal(context, x, y) {
 		let child = this.children[0];
 		let expanded = this.get("Expanded");
@@ -183,7 +183,7 @@ Diagramming.Tree = class extends Expression {
 		}
 		
 		context.beginPath();
-
+		
 		children: for (let i = 1; i < n; ++i) {
 			child = this.children[i];
 			
@@ -207,14 +207,14 @@ Diagramming.Tree = class extends Expression {
 			context.moveTo (x + child.x + child.vertBaseline, y + yyy + 10);       // preventing obfuscation
 			context.lineTo (x + child.x + child.vertBaseline, y + yyy + (2 * 10)); // preventing obfuscation
 		}
-
+		
 		context.stroke();
-
+		
 		for (let i = 1; i < n; ++i) {
 			(child = this.children[i]).display(context, x + child.x, y + child.y);
 		}
 	}
-
+	
 	displayVertical(context, x, y) {
 		let child = this.children[0];
 		let expanded = this.get("Expanded");
@@ -235,7 +235,7 @@ Diagramming.Tree = class extends Expression {
 		}
 		
 		context.beginPath();
-
+		
 		for (let i = 1; i < n; ++i) {
 			child = this.children[i];
 			
@@ -248,9 +248,9 @@ Diagramming.Tree = class extends Expression {
 			context.moveTo (x + 10,      y + child.y + child.horzBaseline); // preventing obfuscation
 			context.lineTo (x + 10 + 10, y + child.y + child.horzBaseline); // preventing obfuscation
 		}
-
+		
 		context.stroke();
-
+		
 		for (let i = 1; i < n; ++i) {
 			(child = this.children[i]).display(context, x + child.x, y + child.y);
 		}
@@ -259,7 +259,7 @@ Diagramming.Tree = class extends Expression {
 	moveAcross(index, direction) {
 		return Diagramming.horizontalTree ? this.moveAcrossHorizontal(index, direction) : this.moveAcrossVertical(index, direction);
 	}
-
+	
 	moveAcrossHorizontal(index, direction) {
 		if (direction == Expression.PREVIOUS) {
 			if (index > 1) {
@@ -284,7 +284,7 @@ Diagramming.Tree = class extends Expression {
 		
 		return this.moveOut(direction);
 	}
-
+	
 	moveAcrossVertical(index, direction) {
 		if (direction == Expression.UP) {
 			if (index > 0) {
@@ -313,7 +313,7 @@ Diagramming.Tree = class extends Expression {
 	moveTo(direction) {
 		return Diagramming.horizontalTree ? this.moveToHorizontal(direction) : this.moveToVertical(direction);
 	}
-
+	
 	moveToHorizontal(direction) {
 		if (!this.get("Expanded")) {
 			return this;
@@ -321,7 +321,7 @@ Diagramming.Tree = class extends Expression {
 		
 		return this.children[0].moveTo(direction);
 	}
-
+	
 	moveToVertical(direction) {
 		if (!this.get("Expanded")) {
 			return this;
