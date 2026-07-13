@@ -6,6 +6,7 @@
 
 	"nameToTree"     : "Creación de diagrama de árbol",
 	"mnemonicToTree" : "CrearÁrbol",
-	"leafToTree"     : "Crear árbol"
-}
+	"leafToTree"     : "Crear árbol",
 
+	"actionExpandCollapseTree" : "Expandir/colapsar árbol"
+}

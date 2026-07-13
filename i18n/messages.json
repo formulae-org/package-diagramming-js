@@ -6,6 +6,7 @@
 
 	"nameToTree"     : "To tree diagram",
 	"mnemonicToTree" : "ToTree",
-	"leafToTree"     : "To tree"
-}
+	"leafToTree"     : "To tree",
 
+	"actionExpandCollapseTree" : "Expand/collapse tree"
+}

@@ -377,4 +377,5 @@ Diagramming.onChangeOrientationStyle = function(horizontal) {
 	
 	Diagramming.horizontalTree = horizontal;
 	Formulae.refreshHandlers();
+	Formulae.loadReloadEditions(); // rebuild the edition panel so the Tree icon re-renders in the chosen orientation
 };

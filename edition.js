@@ -22,7 +22,7 @@ export class Diagramming extends Formulae.Package {}
 
 Diagramming.treeExpandCollapseAction = {
 	isAvailableNow: () => true,
-	getDescription: () => "Expand/collapse tree",
+	getDescription: () => Diagramming.messages.actionExpandCollapseTree,
 	doAction: () => {
 		Formulae.sExpression.expanded = !Formulae.sExpression.expanded;
 		
@@ -33,8 +33,20 @@ Diagramming.treeExpandCollapseAction = {
 };
 
 Diagramming.setEditions = function() {
-	Formulae.addEdition(Diagramming.messages.pathDiagramming, null, Diagramming.messages.leafTree,   () => Expression.wrapperEdition("Diagramming.Tree"));
-	Formulae.addEdition(Diagramming.messages.pathDiagramming, null, Diagramming.messages.leafToTree, () => Expression.wrapperEdition("Diagramming.ToTree"));
+	// Tree — wrapper; Diagramming.Tree requires its Expanded serialized attribute (setSerializationStrings
+	// throws on a missing value), so the icon is hand-authored with Expanded="True" rather than via a helper.
+	Formulae.addEdition(
+		Diagramming.messages.pathDiagramming,
+		'<expression tag="Diagramming.Tree" Expanded="True"><expression tag="Visualization.Selected"><expression tag="Null"/></expression></expression>',
+		Diagramming.messages.leafTree,
+		() => Expression.wrapperEdition("Diagramming.Tree")
+	);
+	Formulae.addEdition(
+		Diagramming.messages.pathDiagramming,
+		Formulae.icon("Diagramming.ToTree", 1),
+		Diagramming.messages.leafToTree,
+		() => Expression.wrapperEdition("Diagramming.ToTree")
+	);
 };
 
 Diagramming.setActions = function() {
