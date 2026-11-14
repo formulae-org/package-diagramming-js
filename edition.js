@@ -39,7 +39,8 @@ Diagramming.setEditions = function() {
 		Diagramming.messages.pathDiagramming,
 		'<expression tag="Diagramming.Tree" Expanded="True"><expression tag="Visualization.Selected"><expression tag="Null"/></expression></expression>',
 		Diagramming.messages.leafTree,
-		() => Expression.wrapperEdition("Diagramming.Tree")
+		() => Expression.wrapperEdition("Diagramming.Tree"),
+		{ caption: true } // a single-node tree is just a framed slot, so the icon alone doesn't identify it
 	);
 	Formulae.addEdition(
 		Diagramming.messages.pathDiagramming,
